@@ -1,0 +1,75 @@
+const htmlCode = `
+<button id="btn-12">
+    <p>Test</p>
+</button>
+`;
+
+const cssCode = `
+#btn-12::before,
+#btn-12::after,
+#btn-12 p::before,
+#btn-12 p::after {
+    content: '';
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: red;
+    z-index: 1;
+    transition: all 1s;
+}
+#btn-12 p{
+    z-index: 2;
+}
+#btn-12::before {
+    top: 0;
+    left: -25%;
+}
+
+#btn-12::after {
+    top: -100%;
+    left: 25%;
+}
+
+#btn-12:hover::before {
+    top: 0;
+    left: 0;
+}
+
+#btn-12:hover::after {
+    top: 0;
+    left: 25%;
+}
+
+#btn-12 p::after{
+    z-index: -1;
+    right: 25%;
+    top: 100%;
+}
+
+#btn-12 p::before{
+    right: 0;
+    top: -100%;
+}
+
+#btn-12:hover p::after{
+    z-index: -1;
+    top: 0;
+    right: 25%;
+}
+
+#btn-12:hover p::before{
+    top: 0;
+    right: 0;
+}
+
+
+`;
+
+document.getElementById('html-code').textContent = htmlCode;
+document.getElementById('css-code').textContent = cssCode;
+
+document.getElementById('res').innerHTML = htmlCode;
+
+const style = document.createElement('style');
+style.innerHTML = cssCode;
+document.head.appendChild(style);

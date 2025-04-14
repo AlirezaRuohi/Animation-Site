@@ -1,0 +1,18 @@
+#btn-4:hover {
+    padding: 20px;
+    border: 2px solid red;
+}
+#btn-4:hover p{
+    letter-spacing: 5px;
+    color: blue;
+    font-weight: 700;
+}
+
+#btn-4{
+    transition: all .5s;
+}
+
+#btn-4 p{
+    font-weight: 400;
+    transition: all .5s;
+}

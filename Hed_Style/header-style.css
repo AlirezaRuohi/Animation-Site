@@ -1,0 +1,87 @@
+@import url(../style.css);
+
+.hed {
+    width: 100%;
+    height: 100px;
+    background-color: var(--cp-color-5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.hed nav{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+.f-1{
+    position: relative;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 90%;
+    height: 100%;
+    position: relative;
+}
+.f-3{
+    width: 15%;
+    height: 100%;
+    align-items: center;
+}
+.f-2{
+    display: flex;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+}
+.hed img{
+    position: absolute;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+}
+
+.hed input {
+   
+    width: 350px;
+    height: 40px;
+    margin: 0;
+    padding: .4em;
+    text-indent: 2em;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: var(--cp-color-6);
+    color: white;
+    border: none;
+}
+.hed div{
+    display: flex;
+    flex-direction: row;
+}
+
+#btn-log{
+    cursor: pointer;
+    background-color: var(--cp-color-6);
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: all .2s;
+}
+#btn-log:hover{
+    background-color: var(--cp-color-1);
+}
+#btn-sin{
+    cursor: pointer;
+    background-color: var(--cp-color-green);
+    transition: all .2s;
+}
+#btn-sin:hover{
+    background-color: var(--cp-color-green-dark);
+    color: white;
+}
+

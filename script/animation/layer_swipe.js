@@ -1,0 +1,56 @@
+const htmlCode = `
+<button id="btn-11">
+    <p></p>
+</button>
+`;
+
+const cssCode = `
+#btn-11::before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: 'Test';
+    transition: all 1s;
+    display: flex;
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+#btn-11:hover::before{
+    transform: translateX(100%) rotateY(360deg) scale(0);
+}
+#btn-11::after{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: 'Test';
+    transition: all 1s;
+    display: flex;
+    transform: translateX(-100%);
+    background-color: red;
+    color: white;
+    justify-content: center;
+    border-radius: 7px;
+    align-items: center;
+    z-index: 0;
+}
+#btn-11:hover::after{
+    transform: translateX(0px) rotate(360deg) scale(1);
+}
+`;
+
+document.getElementById('html-code').textContent = htmlCode;
+document.getElementById('css-code').textContent = cssCode;
+
+document.getElementById('res').innerHTML = htmlCode;
+
+const style = document.createElement('style');
+style.innerHTML = cssCode;
+document.head.appendChild(style);
