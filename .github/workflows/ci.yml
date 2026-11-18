@@ -1,0 +1,16 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: sudo apt-get update && sudo apt-get install -y python3-pil fonts-noto-core ffmpeg
+      - run: npm test
+      - run: python3 renderer/render.py examples/ravaj-intro.json /tmp/studio-work /tmp/test.mp4 /tmp/test.png
+      - run: ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1 /tmp/test.mp4

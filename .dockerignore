@@ -1,0 +1,10 @@
+.env
+node_modules
+data
+.git
+tests
+.github
+__pycache__
+*.pyc
+*.mp4
+*.png

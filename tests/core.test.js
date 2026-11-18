@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, rm } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { validateStory, StudioStore, validBearer, signedPath, verifySignedPath } from '../src/core.js';
+const story={title:'گزارش رواج',format:'landscape',scenes:[{title:'کشف محصولات ایرانی',duration:2,subtitle:'رواج، جایی برای یافتن ابزارهای نو'}]};
+test('validate and preserve Unicode scenes',()=>{const p=validateStory(story);assert.equal(p.scenes[0].title,'کشف محصولات ایرانی');assert.equal(p.width,1280);});
+test('reject malformed durations and colors',()=>{assert.throws(()=>validateStory({...story,scenes:[{title:'hey',duration:0}]}));assert.throws(()=>validateStory({...story,scenes:[{title:'hey',duration:5,accent:'red'}]}));});
+test('persist, update and list storyboards',async()=>{ const dir=await mkdtemp(path.join(os.tmpdir(),'studio-')); try { const s=new StudioStore(dir);await s.init();const p=await s.create(story);assert.equal((await s.get(p.id)).status,'draft');const v=await s.update(p.id,{...story,title:'نسخه دوم'});assert.equal(v.revision,2);assert.equal((await s.list()).length,1); } finally { await rm(dir,{recursive:true,force:true}); }});
+test('bearer and expiring signed download links',()=>{ const token='a'.repeat(64),id='12345678-1234-1234-1234-123456789abc';assert.equal(validBearer('Bearer '+token,token),true);assert.equal(validBearer('Bearer wrong',token),false);const value=signedPath(token,id,'mp4',2,1000000000000);const [pathname,query]=value.split('?');const q=new URLSearchParams(query);assert.equal(verifySignedPath(token,pathname,q.get('expires'),q.get('sig'),1000000000000),true);assert.equal(verifySignedPath(token,pathname,q.get('expires'),q.get('sig'),1000000003000),false);});

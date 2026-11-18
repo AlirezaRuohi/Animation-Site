@@ -1,0 +1,11 @@
+{
+  "title": "رواج | کشف محصولات دیجیتال ایران",
+  "format": "landscape",
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "scenes": [
+    { "title": "ایده‌های تازه را کشف کن", "subtitle": "محصولات دیجیتال ایرانی، یک‌جا", "duration": 3, "theme": "midnight", "visual": "headline", "accent": "#22D3EE" },
+    { "title": "رواج", "subtitle": "مرجع معرفی و کشف محصولات دیجیتال ایران", "duration": 3, "theme": "light", "visual": "product", "accent": "#2563EB" }
+  ]
+}
