@@ -4,7 +4,7 @@ __pycache__/
 *.pyc
 *.mp4
 *.png
+*.zip
 .env
 .DS_Store
-
 tests/tmp-render/
